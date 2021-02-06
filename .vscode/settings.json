@@ -1,13 +1,10 @@
 {
-    "vetur.format.defaultFormatter.ts": "prettier-tslint",
-    "prettier.semi": true,
     "editor.formatOnSave": true,
-    "editor.fontSize": 13,
-    "editor.cursorBlinking": "smooth",
-    "editor.fontFamily": " Consolas,monoLisa,monospace",
-    "editor.fontWeight": "500",
-    "prettier.singleQuote": true,
-    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": true,
+    "typescript.format.insertSpaceAfterTypeAssertion": true,
     "javascript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": true,
+    "javascript.format.placeOpenBraceOnNewLineForFunctions": true,
+    "javascript.format.placeOpenBraceOnNewLineForControlBlocks": true,
     "javascript.format.semicolons": "insert",
+   "prettier.semi": true,
+    "editor.cursorBlinking": "smooth",
 }
