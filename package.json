@@ -1,0 +1,23 @@
+{
+  "name": "environmentprocessing",
+  "version": "1.0.0",
+  "description": "environment data processing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gaspardloriot/environmentProcessing.git"
+  },
+  "author": "Gaspard Loriot-Boserup",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Gaspardloriot/environmentProcessing/issues"
+  },
+  "homepage": "https://github.com/Gaspardloriot/environmentProcessing#readme",
+  "devDependencies": {
+    "prettier": "2.2.1"
+  }
+}
