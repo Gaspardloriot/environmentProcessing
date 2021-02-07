@@ -5,6 +5,6 @@
     "javascript.format.placeOpenBraceOnNewLineForFunctions": true,
     "javascript.format.placeOpenBraceOnNewLineForControlBlocks": true,
     "javascript.format.semicolons": "insert",
-   "prettier.semi": true,
+    "prettier.semi": true,
     "editor.cursorBlinking": "smooth",
 }
