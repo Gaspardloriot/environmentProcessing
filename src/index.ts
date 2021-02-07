@@ -1,4 +1,9 @@
 import { csvParser } from "./parse";
+import { launchDatabase, insertData } from "./db/index";
+const getData = async () => {
+  const data = await csvParser();
+  insertData(data);
+};
 
-csvParser();
-console.log("hello margaux");
+getData();
+launchDatabase();
