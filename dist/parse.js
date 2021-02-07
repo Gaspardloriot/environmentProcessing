@@ -7,6 +7,10 @@ exports.csvParser = void 0;
 const fs_1 = __importDefault(require("fs"));
 const csv_parse_1 = __importDefault(require("csv-parse"));
 const getStream = require("get-stream");
+/**
+ * @description parse clien data
+ * @returns parsed csv file
+ */
 const csvParser = async () => {
     const filePath = "./src/data.csv";
     let csvData = [];
@@ -21,5 +25,6 @@ const csvParser = async () => {
         return formattedData;
     });
     const formattedData = await getStream.array(stream);
+    return formattedData;
 };
 exports.csvParser = csvParser;
