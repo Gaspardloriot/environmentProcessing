@@ -1,3 +1,1 @@
-const hello:string="hello"
-
-console.log("coolos")
+console.log("hello world");
