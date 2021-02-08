@@ -1,9 +1,3 @@
-import { csvParser } from "./parse";
-import { launchDatabase, insertData } from "./db/index";
-const getData = async () => {
-  const data = await csvParser();
-  insertData(data);
-};
+import { getFilename } from "./prompt";
 
-getData();
-launchDatabase();
+getFilename();
