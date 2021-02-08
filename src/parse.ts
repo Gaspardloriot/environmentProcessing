@@ -1,14 +1,17 @@
 import fs from "fs";
 import parse from "csv-parse";
 const getStream = require("get-stream");
+import { launchDatabase } from "./db/index";
 
 /**
  * @description parse clien data
  * @returns parsed csv file
  */
-const csvParser = async (): Promise<string[]> => {
-  const filePath: string = "./src/data.csv";
+const csvParser = async (fileName: string): Promise<string[]> => {
+  const filePath: string = `./src/${fileName}.csv`;
+
   let csvData: string[] = [];
+
   const stream = fs
     .createReadStream(filePath)
     .pipe(parse({ delimiter: "," }))
@@ -23,4 +26,10 @@ const csvParser = async (): Promise<string[]> => {
   const formattedData: string[] = await getStream.array(stream);
   return formattedData;
 };
-export { csvParser };
+
+const clientDataToSQL = async (fileName: string): Promise<void> => {
+  const formattedData = await csvParser(fileName);
+  await launchDatabase(fileName, formattedData);
+};
+
+export { csvParser, clientDataToSQL };

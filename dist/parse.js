@@ -3,16 +3,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.csvParser = void 0;
+exports.clientDataToSQL = exports.csvParser = void 0;
 const fs_1 = __importDefault(require("fs"));
 const csv_parse_1 = __importDefault(require("csv-parse"));
 const getStream = require("get-stream");
+const index_1 = require("./db/index");
 /**
  * @description parse clien data
  * @returns parsed csv file
  */
-const csvParser = async () => {
-    const filePath = "./src/data.csv";
+const csvParser = async (fileName) => {
+    const filePath = `./src/${fileName}.csv`;
     let csvData = [];
     const stream = fs_1.default
         .createReadStream(filePath)
@@ -28,3 +29,8 @@ const csvParser = async () => {
     return formattedData;
 };
 exports.csvParser = csvParser;
+const clientDataToSQL = async (fileName) => {
+    const formattedData = await csvParser(fileName);
+    await index_1.launchDatabase(fileName, formattedData);
+};
+exports.clientDataToSQL = clientDataToSQL;
