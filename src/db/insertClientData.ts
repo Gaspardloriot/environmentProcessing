@@ -1,4 +1,5 @@
 import { db } from "./index";
+import { refDatabase } from "./dbAdder";
 
 const insertData = (tableName: string, data: string[]) => {
   for (let i = 0; i < data.length; i++) {
@@ -7,8 +8,10 @@ const insertData = (tableName: string, data: string[]) => {
     db.query(sql, post, (err: any) => {
       if (err) throw err;
       else {
-        i === data.length - 1 &&
+        if (i === data.length - 1) {
+          refDatabase(tableName);
           console.log(`client data inserted into ${tableName}db`);
+        }
       }
     });
   }
