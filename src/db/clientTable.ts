@@ -1,5 +1,6 @@
 import { db } from "./index";
 import { insertData } from "./insertClientData";
+
 const createClientTable = async (
   tableName: string,
   formattedData: string[]
@@ -10,7 +11,7 @@ const createClientTable = async (
   db.query(sql, (err: string) => {
     if (err) throw err;
     else {
-      console.log("Posts table created");
+      console.log(`${tableName}_clientTable created`);
     }
   });
   insertData(tableName, formattedData);
