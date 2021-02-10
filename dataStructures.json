@@ -1,16 +1,31 @@
 {
     "dataStructures": {
-        "database": null,
+        "database": "datadb",
         "clientData": {
-            "table": null,
-            "uploaded": false
+            "table": "data_clientTable",
+            "uploaded": true
         },
         "trucostData": {
-            "table1": null,
-            "table2": null,
-            "table3": null,
-            "table4": null,
-            "table5": null
+            "table1": {
+                "table": "datadb_tc_1_clientTable",
+                "uploaded": true
+            },
+            "table2": {
+                "table": null,
+                "uploaded": false
+            },
+            "table3": {
+                "table": null,
+                "uploaded": false
+            },
+            "table4": {
+                "table": null,
+                "uploaded": false
+            },
+            "table5": {
+                "table": null,
+                "uploaded": false
+            }
         }
     }
 }

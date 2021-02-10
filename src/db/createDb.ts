@@ -1,5 +1,5 @@
 import { db } from "./index";
-import { createClientTable } from "./clientTable";
+import { createClientTable } from "./clientData/clientTable";
 
 const createDb = (dataBase: string, formattedData: string[]) => {
   const sql: string = `CREATE DATABASE ${dataBase}db`;
