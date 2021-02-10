@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.insertData = void 0;
-const index_1 = require("./index");
+const index_1 = require("../index");
 const dbAdder_1 = require("./dbAdder");
 const insertData = (tableName, data) => {
     for (let i = 0; i < data.length; i++) {

@@ -32,10 +32,9 @@
   },
   "dependencies": {
     "csv-parse": "4.15.1",
-    "express": "^4.17.1",
     "get-stream": "4.1.0",
-    "jsonfile": "^6.1.0",
-    "mysql": "^2.18.1",
-    "prompt": "^1.1.0"
+    "jsonfile": "6.1.0",
+    "mysql": "2.18.1",
+    "prompt": "1.1.0"
   }
 }

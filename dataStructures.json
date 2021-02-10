@@ -1,16 +1,1 @@
-{
-    "dataStructures": {
-        "database": null,
-        "clientData": {
-            "table": null,
-            "uploaded": false
-        },
-        "trucostData": {
-            "table1": null,
-            "table2": null,
-            "table3": null,
-            "table4": null,
-            "table5": null
-        }
-    }
-}
+{"dataStructures":{"database":"datadb","clientData":{"table":"data_clientTable","uploaded":true},"trucostData":{"table1":null,"table2":null,"table3":null,"table4":null,"table5":null}}}
