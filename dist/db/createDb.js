@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createDb = void 0;
 const index_1 = require("./index");
-const clientTable_1 = require("./clientTable");
+const clientTable_1 = require("./clientData/clientTable");
 const createDb = (dataBase, formattedData) => {
     const sql = `CREATE DATABASE ${dataBase}db`;
     index_1.db.query(sql, (err) => {

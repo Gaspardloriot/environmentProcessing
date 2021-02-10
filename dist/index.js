@@ -1,18 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const prompt_1 = require("./prompt");
+const add_table_1 = require("./db/truCost/tc-1/add_table");
 prompt_1.getFilename();
 const checkOnDb = setInterval(() => {
     checkDataStructures();
 }, 100);
-let cool = 0;
 function checkDataStructures() {
-    cool = cool + 1;
-    var config = require("../dataStructures.json");
+    const config = require("../dataStructures.json");
     if (config.dataStructures.clientData.uploaded) {
+        add_table_1.createTcOne(config.dataStructures.database);
         console.log("client data uploaded");
         console.log(config.dataStructures.clientData.uploaded);
-        console.log(cool);
         myStopFunction();
     }
 }
