@@ -1,14 +1,14 @@
 {
     "dataStructures": {
-        "database": "datadb",
+        "database": null,
         "clientData": {
-            "table": "data_clientTable",
-            "uploaded": true
+            "table": null,
+            "uploaded": false
         },
         "trucostData": {
             "table1": {
-                "table": "datadb_tc_1_clientTable",
-                "uploaded": true
+                "table": null,
+                "uploaded": false
             },
             "table2": {
                 "table": null,
