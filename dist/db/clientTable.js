@@ -10,7 +10,7 @@ const createClientTable = async (tableName, formattedData) => {
         if (err)
             throw err;
         else {
-            console.log("Posts table created");
+            console.log(`${tableName}_clientTable created`);
         }
     });
     insertClientData_1.insertData(tableName, formattedData);
