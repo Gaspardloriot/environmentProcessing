@@ -7,7 +7,7 @@ const createDb = (dataBase: string, formattedData: string[]) => {
     if (err) throw err;
     else {
       createClientTable(dataBase, formattedData);
-      console.log(`Database ${dataBase}db created...`);
+      console.log(`Database ${dataBase}db created..........done`);
     }
   });
 };
