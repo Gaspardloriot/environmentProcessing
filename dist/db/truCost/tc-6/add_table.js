@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createTcOne = void 0;
+exports.createTcSix = void 0;
 const index_1 = require("../../index");
 const parse_1 = require("./parse");
-const createTcOne = (tableName) => {
-    const table = `${tableName}_tc_1`;
+const createTcSix = (tableName) => {
+    const table = `${tableName}_tc_6`;
     const sql = `CREATE TABLE ${tableName}.${table}(id int, first_name VARCHAR(255), last_name VARCHAR(255), gender VARCHAR(255), PRIMARY KEY(id))`;
     const fileName = tableName.substring(0, 4);
     index_1.db.query(sql, (err) => {
@@ -16,4 +16,4 @@ const createTcOne = (tableName) => {
         }
     });
 };
-exports.createTcOne = createTcOne;
+exports.createTcSix = createTcSix;

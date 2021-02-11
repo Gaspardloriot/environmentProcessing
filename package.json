@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node dist/index.js",
     "launch": "npm run dist && npm run start",
-    "dev": "nodemon src/index.ts",
+    "dev": "ts-node src/index.ts",
     "dist": "tsc -p .",
     "build": "npm run dist && npm run dev",
     "prettier-watch": "onchange 'src/**/*.ts' -- prettier --write {{changed}}"
