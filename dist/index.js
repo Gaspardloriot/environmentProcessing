@@ -10,7 +10,7 @@ function checkDataStructures() {
     const config = require("../dataStructures.json");
     if (config.dataStructures.clientData.uploaded) {
         add_table_1.createTcOne(config.dataStructures.database);
-        console.log("client data uploaded");
+        console.log("client data uploaded..........done");
         console.log(config.dataStructures.clientData.uploaded);
         myStopFunction();
     }

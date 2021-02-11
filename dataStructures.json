@@ -25,6 +25,10 @@
             "table5": {
                 "table": null,
                 "uploaded": false
+            },
+            "table6": {
+                "table": null,
+                "uploaded": false
             }
         }
     }

@@ -11,7 +11,7 @@ function checkDataStructures() {
 
   if (config.dataStructures.clientData.uploaded) {
     createTcOne(config.dataStructures.database);
-    console.log("client data uploaded");
+    console.log("client data uploaded..........done");
     console.log(config.dataStructures.clientData.uploaded);
     myStopFunction();
   }
