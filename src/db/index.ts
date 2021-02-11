@@ -13,7 +13,7 @@ const launchDatabase = async (fileName: string, formattedData: string[]) => {
     if (err) {
       throw err;
     }
-    console.info("mysql connected successfully");
+    console.info("mysql connected successfully..........done");
     createDb(fileName, formattedData);
   });
 };

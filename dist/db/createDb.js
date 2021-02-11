@@ -10,7 +10,7 @@ const createDb = (dataBase, formattedData) => {
             throw err;
         else {
             clientTable_1.createClientTable(dataBase, formattedData);
-            console.log(`Database ${dataBase}db created...`);
+            console.log(`Database ${dataBase}db created..........done`);
         }
     });
 };
