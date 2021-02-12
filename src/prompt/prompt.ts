@@ -1,7 +1,8 @@
-import { clientDataToSQL } from "./parse";
 const prompter = require("prompt");
+import { clientDataToSQL } from "../parse";
+import { propertiesType } from "./types";
 
-const properties = [
+const properties: propertiesType[] = [
   {
     name: "filename",
     validator: /^[a-zA-Z\s\-]+$/,
@@ -9,8 +10,12 @@ const properties = [
   },
 ];
 
+/**
+ * @description gets client Filename to launch Db import process
+ * @returns void
+ */
 const getFilename = (): void => {
-  console.info("please enter filename");
+  console.log("please enter filename");
   prompter.start();
 
   prompter.get(properties, function (err: string, result: any) {

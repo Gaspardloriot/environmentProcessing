@@ -4,8 +4,8 @@ const getStream = require("get-stream");
 import { launchDatabase } from "./db/index";
 
 /**
- * @description parse clien data
- * @returns parsed csv file
+ * @description parses client data
+ * @returns string[] parsed csv file
  */
 const csvParser = async (fileName: string): Promise<string[]> => {
   const filePath: string = `./src/${fileName}.csv`;
@@ -20,10 +20,12 @@ const csvParser = async (fileName: string): Promise<string[]> => {
     })
     .on("end", () => {
       const formattedData: string[] = csvData;
+
       return formattedData;
     });
 
   const formattedData: string[] = await getStream.array(stream);
+
   return formattedData;
 };
 
