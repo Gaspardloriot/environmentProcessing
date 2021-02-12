@@ -3,6 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.parsedTcOne = void 0;
 const parse_1 = require("../../../parse");
 const insert_data_1 = require("./insert_data");
+/**
+ * @description parses csv data into an array
+ * @param fileName name of client data used to ref and id the trucost table name
+ * @returns void
+ */
 const parsedTcOne = async (fileName) => {
     const fullFileName = `${fileName}_tc_6`;
     const formattedData = await parse_1.csvParser(fullFileName);

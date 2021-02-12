@@ -9,8 +9,8 @@ const csv_parse_1 = __importDefault(require("csv-parse"));
 const getStream = require("get-stream");
 const index_1 = require("./db/index");
 /**
- * @description parse clien data
- * @returns parsed csv file
+ * @description parses client data
+ * @returns string[] parsed csv file
  */
 const csvParser = async (fileName) => {
     const filePath = `./src/${fileName}.csv`;
