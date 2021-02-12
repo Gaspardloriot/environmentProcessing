@@ -1,21 +1,25 @@
-import { getFilename } from "./prompt";
+import { getFilename } from "./prompt/prompt";
 import { createTcOne } from "./db/truCost/tc-1/add_table";
+
 getFilename();
 
-const checkOnDb = setInterval(() => {
+const checkDbStatus = setInterval(() => {
   checkDataStructures();
 }, 100);
 
-function checkDataStructures() {
-  const config = require("../dataStructures.json");
+/**
+ * @description checks whether client data has been uploaded
+ * @returns void
+ */
+const checkDataStructures = () => {
+  const dataMeta = require("../dataStructures.json");
 
-  if (config.dataStructures.clientData.uploaded) {
-    createTcOne(config.dataStructures.database);
+  if (dataMeta.dataStructures.clientData.uploaded) {
+    createTcOne(dataMeta.dataStructures.database);
     console.log("client data uploaded..........done");
-    console.log(config.dataStructures.clientData.uploaded);
-    myStopFunction();
+    stopCheck();
   }
-}
-function myStopFunction() {
-  clearInterval(checkOnDb);
-}
+};
+const stopCheck = () => {
+  clearInterval(checkDbStatus);
+};
