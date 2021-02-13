@@ -9,7 +9,10 @@ import { insertDataTcOne } from "./insert_data";
 const parsedTcOne = async (fileName: string): Promise<void> => {
   const fullFileName: string = `${fileName}_tc_1`;
   const formattedData: string[] = await csvParser(fullFileName);
-  insertDataTcOne(fileName, formattedData);
+  insertDataTcOne(fileName, [formattedData[2]]);
+  console.log("DONE BRO");
+  console.log(formattedData[2][20]);
+  console.log(typeof formattedData[2][20]);
 };
 
 export { parsedTcOne };

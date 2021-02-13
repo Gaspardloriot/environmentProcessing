@@ -12,7 +12,7 @@ const csvParser = async (fileName: string): Promise<string[]> => {
 
   let csvData: string[] = [];
 
-  const stream = fs
+  let stream = fs
     .createReadStream(filePath)
     .pipe(parse({ delimiter: "," }))
     .on("data", (csvrow: string) => {

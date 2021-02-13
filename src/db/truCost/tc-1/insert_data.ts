@@ -8,10 +8,15 @@ import { createTcTwo } from "../tc-2/add_table";
  * @param formattedData all formatted data for trucost table
  * @returns void
  */
-const insertDataTcOne = (fileName: string, formattedData: string[]) => {
+const insertDataTcOne = (fileName: string, formattedData: any) => {
   const table: string = `${fileName}db_tc_1`;
-  const sql: string = `INSERT INTO ${fileName}db.${table} (id, first_name, last_name, gender) VALUES ?`;
-  formattedData.shift();
+  const sql: string = `INSERT INTO ${fileName}db.${table} VALUES ?`;
+  //formattedData.shift();
+  for (let i = 0; i < formattedData[0].length; i++) {
+    if (formattedData[0][i] === "null") {
+      formattedData[0][i] = 0;
+    }
+  }
   db.query(sql, [formattedData], (err: string, res: string) => {
     if (err) throw err;
     else if (res) {
