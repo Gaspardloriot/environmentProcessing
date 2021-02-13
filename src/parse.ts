@@ -15,7 +15,7 @@ const csvParser = async (fileName: string): Promise<string[]> => {
   let stream = fs
     .createReadStream(filePath)
     .pipe(parse({ delimiter: "," }))
-    .on("data", (csvrow: string) => {
+    .on("data", (csvrow) => {
       csvData.push(csvrow);
     })
     .on("end", () => {
