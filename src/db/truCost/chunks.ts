@@ -1,5 +1,5 @@
 import { CHUNK_SIZE } from "./constants";
-//ok
+
 const getChunks = (arrayLength: number): number[][] => {
   const cycles: number = Math.ceil(arrayLength / CHUNK_SIZE);
   let allIndexes: number[][] = [];
