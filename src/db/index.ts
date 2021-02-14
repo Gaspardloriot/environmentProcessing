@@ -9,7 +9,11 @@ const db = mysql.createConnection({
 });
 
 /**
+<<<<<<< HEAD
  *@description launch and connect to database, then launch database creation
+=======
+ *@description launch and connect to database, then launch launch database creation
+>>>>>>> main
  * @param fileName string is the name of the client data file
  * @param formattedData string[] all formatted data of client file
  */

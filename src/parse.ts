@@ -12,10 +12,17 @@ const csvParser = async (fileName: string): Promise<string[]> => {
 
   let csvData: string[] = [];
 
+<<<<<<< HEAD
   let stream = fs
     .createReadStream(filePath)
     .pipe(parse({ delimiter: "," }))
     .on("data", (csvrow) => {
+=======
+  const stream = fs
+    .createReadStream(filePath)
+    .pipe(parse({ delimiter: "," }))
+    .on("data", (csvrow: string) => {
+>>>>>>> main
       csvData.push(csvrow);
     })
     .on("end", () => {
