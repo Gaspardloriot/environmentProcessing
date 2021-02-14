@@ -9,16 +9,16 @@ const insertClientData_1 = require("./insertClientData");
  * @param formattedData string[] client formatted data
  * @returns void
  */
-const createClientTable = async (tableName, formattedData) => {
-    const table = `${tableName}_clientTable`;
-    const sql = `CREATE TABLE ${tableName}db.${table}(id int AUTO_INCREMENT, title VARCHAR(255), body VARCHAR(255), PRIMARY KEY(id))`;
+const createClientTable = async (database, formattedData) => {
+    const table = `${database}_clientTable`;
+    const sql = `CREATE TABLE ${database}db.${table}(id int AUTO_INCREMENT, title VARCHAR(255), body VARCHAR(255), PRIMARY KEY(id))`;
     index_1.db.query(sql, (err) => {
         if (err)
             throw err;
         else {
-            console.log(`${tableName}_clientTable created`);
+            console.log(`${database}_clientTable created`);
         }
     });
-    insertClientData_1.insertData(tableName, formattedData);
+    insertClientData_1.insertData(database, formattedData);
 };
 exports.createClientTable = createClientTable;

@@ -1,1 +1,35 @@
-{"dataStructures":{"database":"datadb","clientData":{"table":"data_clientTable","uploaded":true},"trucostData":{"table1":{"table":"datadb_tc_1","uploaded":true},"table2":{"table":"datadb_tc_2","uploaded":true},"table3":{"table":"datadb_tc_3","uploaded":true},"table4":{"table":"datadb_tc_4","uploaded":true},"table5":{"table":"datadb_tc_5","uploaded":true},"table6":{"table":"datadb_tc_6","uploaded":true}}}}
+{
+    "dataStructures": {
+        "database": "datadb",
+        "clientData": {
+            "table": "data_clientTable",
+            "uploaded": true
+        },
+        "trucostData": {
+            "table1": {
+                "table": "datadb_tc_1",
+                "uploaded": true
+            },
+            "table2": {
+                "table": "datadb_tc_2",
+                "uploaded": true
+            },
+            "table3": {
+                "table": "datadb_tc_3",
+                "uploaded": true
+            },
+            "table4": {
+                "table": "datadb_tc_4",
+                "uploaded": true
+            },
+            "table5": {
+                "table": "datadb_tc_5",
+                "uploaded": true
+            },
+            "table6": {
+                "table": "datadb_tc_6",
+                "uploaded": true
+            }
+        }
+    }
+}

@@ -11,7 +11,7 @@ const db = mysql.createConnection({
 });
 exports.db = db;
 /**
- *@description launch and connect to database, then launch launch database creation
+ *@description launch and connect to database, then launch database creation
  * @param fileName string is the name of the client data file
  * @param formattedData string[] all formatted data of client file
  */
