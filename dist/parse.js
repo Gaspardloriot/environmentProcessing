@@ -15,7 +15,11 @@ const index_1 = require("./db/index");
 const csvParser = async (fileName) => {
     const filePath = `./src/${fileName}.csv`;
     let csvData = [];
+<<<<<<< HEAD
+    let stream = fs_1.default
+=======
     const stream = fs_1.default
+>>>>>>> main
         .createReadStream(filePath)
         .pipe(csv_parse_1.default({ delimiter: "," }))
         .on("data", (csvrow) => {
