@@ -1,10 +1,7 @@
 import { db } from "../../index";
 import { refFile } from "../refTc_tables";
-<<<<<<< HEAD
-import { getChunkedData } from "../chunks";
-=======
->>>>>>> main
 import { createTcTwo } from "../tc-2/add_table";
+import { getChunkedData } from "../chunks";
 
 /**
  *@description migrates all required data of trucost file number ref'd in function number to db
@@ -12,7 +9,6 @@ import { createTcTwo } from "../tc-2/add_table";
  * @param formattedData all formatted data for trucost table
  * @returns void
  */
-<<<<<<< HEAD
 const insertDataTcOne = (fileName: string, formattedData: any) => {
   const table: string = `${fileName}db_tc_1`;
   const sql: string = `INSERT INTO ${fileName}db.${table} VALUES ?`;
@@ -33,20 +29,6 @@ const insertDataTcOne = (fileName: string, formattedData: any) => {
   }
   refFile(table, "table1");
   createTcTwo(`${fileName}db`);
-=======
-const insertDataTcOne = (fileName: string, formattedData: string[]) => {
-  const table: string = `${fileName}db_tc_1`;
-  const sql: string = `INSERT INTO ${fileName}db.${table} (id, first_name, last_name, gender) VALUES ?`;
-  formattedData.shift();
-  db.query(sql, [formattedData], (err: string, res: string) => {
-    if (err) throw err;
-    else if (res) {
-      refFile(table, "table1");
-      createTcTwo(`${fileName}db`);
-      console.log(`data uploaded into ${table} uploaded..........done`);
-    }
-  });
->>>>>>> main
 };
 
 export { insertDataTcOne };
