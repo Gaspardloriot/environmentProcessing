@@ -19,6 +19,7 @@ const csvParser = async (fileName) => {
         .createReadStream(filePath)
         .pipe(csv_parse_1.default({ delimiter: "," }))
         .on("data", (csvrow) => {
+        csvrow.unshift("id");
         csvData.push(csvrow);
     })
         .on("end", () => {

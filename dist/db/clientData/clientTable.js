@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createClientTable = void 0;
+const color = require("bash-color");
 const index_1 = require("../index");
 const insertClientData_1 = require("./insertClientData");
 /**
@@ -16,7 +17,7 @@ const createClientTable = async (database, formattedData) => {
         if (err)
             throw err;
         else {
-            console.log(`${database}_clientTable created`);
+            console.log("TABLE", color.wrap(`${table}`, color.colors.CYAN), "CREATE.....", color.wrap("DONE", color.colors.GREEN));
         }
     });
     insertClientData_1.insertData(database, formattedData);
