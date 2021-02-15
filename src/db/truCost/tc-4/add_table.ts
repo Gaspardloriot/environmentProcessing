@@ -1,3 +1,4 @@
+const color = require("bash-color");
 import { db } from "../../index";
 import { parsedTcOne } from "./parse";
 
@@ -13,7 +14,12 @@ const createTcFour = (tableName: string) => {
   db.query(sql, (err: string) => {
     if (err) throw err;
     else {
-      console.log(`${table} created`);
+      console.log(
+        "TABLE",
+        color.wrap(`${table}`, color.colors.CYAN),
+        "CREATE.....",
+        color.wrap("DONE", color.colors.GREEN)
+      );
       parsedTcOne(fileName);
     }
   });

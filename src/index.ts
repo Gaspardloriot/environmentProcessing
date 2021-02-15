@@ -1,3 +1,4 @@
+const color = require("bash-color");
 import { getFilename } from "./prompt/prompt";
 import { createTcOne } from "./db/truCost/tc-1/add_table";
 
@@ -11,12 +12,16 @@ const checkDbStatus = setInterval(() => {
  * @description checks whether client data has been uploaded
  * @returns void
  */
+
 const checkDataStructures = () => {
   const dataMeta = require("../dataStructures.json");
 
   if (dataMeta.dataStructures.clientData.uploaded) {
     createTcOne(dataMeta.dataStructures.database);
-    console.log("client data uploaded..........done");
+    console.log(
+      "CLIENT DATA MIGRATION...",
+      color.wrap("DONE", color.colors.GREEN)
+    );
     stopCheck();
   }
 };
