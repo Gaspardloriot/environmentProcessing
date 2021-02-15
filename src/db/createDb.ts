@@ -1,3 +1,4 @@
+const color = require("bash-color");
 import { db } from "./index";
 import { createClientTable } from "./clientData/clientTable";
 
@@ -13,7 +14,12 @@ const createDb = (dataBase: string, formattedData: string[]): void => {
     if (err) throw err;
     else {
       createClientTable(dataBase, formattedData);
-      console.log(`Database ${dataBase}db created..........done`);
+      console.log(
+        "DATABASE",
+        color.wrap(`${dataBase}db`, color.colors.CYAN),
+        "INIT.....",
+        color.wrap("DONE", color.colors.GREEN)
+      );
     }
   });
 };

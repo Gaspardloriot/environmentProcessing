@@ -1,3 +1,4 @@
+const color = require("bash-color");
 import { db } from "../index";
 import { insertData } from "./insertClientData";
 
@@ -17,7 +18,12 @@ const createClientTable = async (
   db.query(sql, (err: string) => {
     if (err) throw err;
     else {
-      console.log(`${database}_clientTable created`);
+      console.log(
+        "TABLE",
+        color.wrap(`${table}`, color.colors.CYAN),
+        "CREATE.....",
+        color.wrap("DONE", color.colors.GREEN)
+      );
     }
   });
   insertData(database, formattedData);

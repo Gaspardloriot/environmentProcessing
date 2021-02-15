@@ -16,11 +16,11 @@ const csvParser = async (fileName: string): Promise<string[]> => {
     .createReadStream(filePath)
     .pipe(parse({ delimiter: "," }))
     .on("data", (csvrow) => {
+      csvrow.unshift("id");
       csvData.push(csvrow);
     })
     .on("end", () => {
       const formattedData: string[] = csvData;
-
       return formattedData;
     });
 
