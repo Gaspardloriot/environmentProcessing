@@ -49,11 +49,6 @@ const cleanChunkedData = (chunkedData: string[][] | number[][]) => {
         chunkedData[j][i] = 0;
       }
       if (chunkedData[j][i] === "") {
-        console.log(
-          "handled value",
-          color.purple("null", true),
-          color.yellow(`row index ${j}:${i} of CHUNK`, true)
-        );
         chunkedData[j][i] = 0;
       }
     }

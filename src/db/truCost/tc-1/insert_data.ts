@@ -38,7 +38,7 @@ const insertDataTcOne = (fileName: string, formattedData: any) => {
     });
   }
   refFile(table, "table1");
-  //createTcTwo(`${fileName}db`);
+  createTcTwo(`${fileName}db`);
 };
 
 export { insertDataTcOne };
