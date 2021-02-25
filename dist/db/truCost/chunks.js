@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getChunkedData = void 0;
+const color = require("bash-color");
 const constants_1 = require("./constants");
 const getChunks = (arrayLength) => {
     const cycles = Math.ceil(arrayLength / constants_1.CHUNK_SIZE);
@@ -14,11 +15,11 @@ const getChunks = (arrayLength) => {
         const cycleIndex = [startValue, endValue];
         allIndexes.push(cycleIndex);
     }
-    console.log(allIndexes.length);
+    console.log(color.purple(`   chunks created :  ${allIndexes.length}\n`, true));
     return allIndexes;
 };
 const getChunkedData = (formattedData) => {
-    console.log(formattedData.length);
+    console.log(color.purple(`\n   table length   :${formattedData.length}`, true));
     const cycleIndexes = getChunks(formattedData.length);
     let allChunks = [];
     for (let i = 0; i < cycleIndexes.length; i++) {
@@ -33,14 +34,12 @@ const getChunkedData = (formattedData) => {
 exports.getChunkedData = getChunkedData;
 const cleanChunkedData = (chunkedData) => {
     for (let j = 0; j < chunkedData.length; j++) {
+        chunkedData[j][0] = parseInt(`${chunkedData[j][1]}${chunkedData[j][4]}`);
         for (let i = 0; i < chunkedData[0].length; i++) {
-            if (chunkedData[j][i] === "null") {
-                chunkedData[j][i] = 0;
-            }
-            if (chunkedData[j][i] === "") {
-                console.log("found value null");
-                console.log(typeof chunkedData[j][i]);
-                chunkedData[j][i] = 0;
+            for (let k = 0; k < constants_1.invalidValues.length; k++) {
+                if (chunkedData[j][i] === constants_1.invalidValues[k]) {
+                    chunkedData[j][i] = 0;
+                }
             }
         }
     }

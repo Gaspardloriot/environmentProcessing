@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createDb = void 0;
+const color = require("bash-color");
 const index_1 = require("./index");
 const clientTable_1 = require("./clientData/clientTable");
 /**
@@ -16,7 +17,7 @@ const createDb = (dataBase, formattedData) => {
             throw err;
         else {
             clientTable_1.createClientTable(dataBase, formattedData);
-            console.log(`Database ${dataBase}db created..........done`);
+            console.log("DATABASE", color.wrap(`${dataBase}db`, color.colors.CYAN), "INIT.....", color.wrap("DONE", color.colors.GREEN));
         }
     });
 };
