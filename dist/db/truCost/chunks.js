@@ -36,12 +36,10 @@ const cleanChunkedData = (chunkedData) => {
     for (let j = 0; j < chunkedData.length; j++) {
         chunkedData[j][0] = parseInt(`${chunkedData[j][1]}${chunkedData[j][4]}`);
         for (let i = 0; i < chunkedData[0].length; i++) {
-            if (chunkedData[j][i] === "null") {
-                chunkedData[j][i] = 0;
-            }
-            if (chunkedData[j][i] === "") {
-                console.log("handled value", color.purple("null", true), color.yellow(`row index ${j}:${i} of CHUNK`, true));
-                chunkedData[j][i] = 0;
+            for (let k = 0; k < constants_1.invalidValues.length; k++) {
+                if (chunkedData[j][i] === constants_1.invalidValues[k]) {
+                    chunkedData[j][i] = 0;
+                }
             }
         }
     }

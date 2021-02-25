@@ -4,6 +4,7 @@ exports.insertDataTcOne = void 0;
 const color = require("bash-color");
 const index_1 = require("../../index");
 const refTc_tables_1 = require("../refTc_tables");
+const add_table_1 = require("../tc-2/add_table");
 const chunks_1 = require("../chunks");
 /**
  * @description migrates all required data of trucost file number ref'd in function number to db
@@ -30,6 +31,6 @@ const insertDataTcOne = (fileName, formattedData) => {
         });
     }
     refTc_tables_1.refFile(table, "table1");
-    //createTcTwo(`${fileName}db`);
+    add_table_1.createTcTwo(`${fileName}db`);
 };
 exports.insertDataTcOne = insertDataTcOne;
