@@ -4,6 +4,7 @@ exports.createClientTable = void 0;
 const color = require("bash-color");
 const index_1 = require("../index");
 const insertClientData_1 = require("./insertClientData");
+const Table_format_1 = require("./Table_format");
 /**
  *@description creates client data table on db
  * @param tableName string name client data table
@@ -12,7 +13,7 @@ const insertClientData_1 = require("./insertClientData");
  */
 const createClientTable = async (database, formattedData) => {
     const table = `${database}_clientTable`;
-    const sql = `CREATE TABLE ${database}db.${table}(id int AUTO_INCREMENT, title VARCHAR(255), body VARCHAR(255), PRIMARY KEY(id))`;
+    const sql = `CREATE TABLE ${database}db.${table}${Table_format_1.client_tc}`;
     index_1.db.query(sql, (err) => {
         if (err)
             throw err;

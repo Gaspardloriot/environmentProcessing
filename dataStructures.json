@@ -29,6 +29,10 @@
             "table6": {
                 "table": null,
                 "uploaded": false
+            },
+            "table7": {
+                "table": null,
+                "uploaded": false
             }
         }
     }

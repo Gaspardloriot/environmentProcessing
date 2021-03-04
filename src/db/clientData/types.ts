@@ -1,8 +1,3 @@
-interface postType {
-  title: string;
-  body: string;
-}
-
 interface dbResponse {
   fieldCount: number;
   affectedRows: number;
@@ -14,4 +9,4 @@ interface dbResponse {
   changedRows: number;
 }
 
-export { postType, dbResponse };
+export { dbResponse };

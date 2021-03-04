@@ -6,6 +6,7 @@ const index_1 = require("../../index");
 const refTc_tables_1 = require("../refTc_tables");
 const add_table_1 = require("../tc-3/add_table");
 const chunks_1 = require("../chunks");
+const constants_1 = require("../constants");
 /**
  *@description migrates all required data of trucost file number ref'd in function number to db
  * @param fileName name of client data file to ref and id trucost data tables and database
@@ -16,7 +17,7 @@ const insertDataTcOne = (fileName, formattedData) => {
     const table = `${fileName}db_tc_2`;
     const sql = `INSERT INTO ${fileName}db.${table} VALUES ?`;
     formattedData.shift();
-    const allChunks = chunks_1.getChunkedData(formattedData);
+    const allChunks = chunks_1.getChunkedData(formattedData, constants_1.BIG_CHUNK_SIZE);
     console.log("");
     for (let i = 0; i < allChunks.length; i++) {
         index_1.db.query(sql, [allChunks[i]], (err, res) => {

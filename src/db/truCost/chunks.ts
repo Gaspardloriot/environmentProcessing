@@ -1,7 +1,7 @@
 const color = require("bash-color");
-import { CHUNK_SIZE, invalidValues } from "./constants";
+import { invalidValues } from "./constants";
 
-const getChunks = (arrayLength: number): number[][] => {
+const getChunks = (arrayLength: number, CHUNK_SIZE: number): number[][] => {
   const cycles: number = Math.ceil(arrayLength / CHUNK_SIZE);
   let allIndexes: number[][] = [];
 
@@ -21,11 +21,14 @@ const getChunks = (arrayLength: number): number[][] => {
   return allIndexes;
 };
 
-const getChunkedData = (formattedData: string[][] | number[][]) => {
+const getChunkedData = (
+  formattedData: string[][] | number[][],
+  CHUNK_SIZE: number
+) => {
   console.log(
     color.purple(`\n   table length   :${formattedData.length}`, true)
   );
-  const cycleIndexes: number[][] = getChunks(formattedData.length);
+  const cycleIndexes: number[][] = getChunks(formattedData.length, CHUNK_SIZE);
   let allChunks = [];
   for (let i = 0; i < cycleIndexes.length; i++) {
     const cycleStart: number = cycleIndexes[i][0];
