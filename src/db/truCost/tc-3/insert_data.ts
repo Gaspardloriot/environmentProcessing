@@ -3,6 +3,7 @@ import { db } from "../../index";
 import { refFile } from "../refTc_tables";
 import { createTcFour } from "../tc-4/add_table";
 import { getChunkedData } from "../chunks";
+import { BIG_CHUNK_SIZE } from "../constants";
 /**
  *@description migrates all required data of trucost file number ref'd in function number to db
  * @param fileName name of client data file to ref and id trucost data tables and database
@@ -16,7 +17,7 @@ const insertDataTcOne = (fileName: string, formattedData: any) => {
   formattedData.forEach((row: any) => row.splice(31, 1));
   formattedData.forEach((row: any) => row.splice(49, 1));
   formattedData.forEach((row: any) => row.splice(59, 2));
-  const allChunks = getChunkedData(formattedData);
+  const allChunks = getChunkedData(formattedData, BIG_CHUNK_SIZE);
   console.log("");
   for (let i = 0; i < allChunks.length; i++) {
     db.query(sql, [allChunks[i]], (err: string, res: string) => {

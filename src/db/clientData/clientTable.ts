@@ -1,6 +1,7 @@
 const color = require("bash-color");
 import { db } from "../index";
 import { insertData } from "./insertClientData";
+import { client_tc } from "./Table_format";
 
 /**
  *@description creates client data table on db
@@ -13,7 +14,7 @@ const createClientTable = async (
   formattedData: string[]
 ): Promise<void> => {
   const table: string = `${database}_clientTable`;
-  const sql: string = `CREATE TABLE ${database}db.${table}(id int AUTO_INCREMENT, title VARCHAR(255), body VARCHAR(255), PRIMARY KEY(id))`;
+  const sql: string = `CREATE TABLE ${database}db.${table}${client_tc}`;
 
   db.query(sql, (err: string) => {
     if (err) throw err;

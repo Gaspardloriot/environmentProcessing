@@ -3,6 +3,7 @@ import { db } from "../../index";
 import { refFile } from "../refTc_tables";
 import { createTcTwo } from "../tc-2/add_table";
 import { getChunkedData } from "../chunks";
+import { SMALL_CHUNK_SIZE } from "../constants";
 
 /**
  * @description migrates all required data of trucost file number ref'd in function number to db
@@ -14,7 +15,7 @@ const insertDataTcOne = (fileName: string, formattedData: any) => {
   const table: string = `${fileName}db_tc_1`;
   const sql: string = `INSERT INTO ${fileName}db.${table} VALUES ?`;
   formattedData.shift();
-  const allChunks = getChunkedData(formattedData);
+  const allChunks = getChunkedData(formattedData, SMALL_CHUNK_SIZE);
   console.log("");
   for (let i = 0; i < allChunks.length; i++) {
     db.query(sql, [allChunks[i]], (err: string, res: string) => {

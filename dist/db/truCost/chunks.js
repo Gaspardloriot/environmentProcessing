@@ -3,12 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getChunkedData = void 0;
 const color = require("bash-color");
 const constants_1 = require("./constants");
-const getChunks = (arrayLength) => {
-    const cycles = Math.ceil(arrayLength / constants_1.CHUNK_SIZE);
+const getChunks = (arrayLength, CHUNK_SIZE) => {
+    const cycles = Math.ceil(arrayLength / CHUNK_SIZE);
     let allIndexes = [];
     for (let i = 0; i <= cycles - 1; i++) {
-        let startValue = i * constants_1.CHUNK_SIZE;
-        let endValue = startValue + constants_1.CHUNK_SIZE - 1;
+        let startValue = i * CHUNK_SIZE;
+        let endValue = startValue + CHUNK_SIZE - 1;
         if (endValue > arrayLength - 1) {
             endValue = arrayLength;
         }
@@ -18,9 +18,9 @@ const getChunks = (arrayLength) => {
     console.log(color.purple(`   chunks created :  ${allIndexes.length}\n`, true));
     return allIndexes;
 };
-const getChunkedData = (formattedData) => {
+const getChunkedData = (formattedData, CHUNK_SIZE) => {
     console.log(color.purple(`\n   table length   :${formattedData.length}`, true));
-    const cycleIndexes = getChunks(formattedData.length);
+    const cycleIndexes = getChunks(formattedData.length, CHUNK_SIZE);
     let allChunks = [];
     for (let i = 0; i < cycleIndexes.length; i++) {
         const cycleStart = cycleIndexes[i][0];

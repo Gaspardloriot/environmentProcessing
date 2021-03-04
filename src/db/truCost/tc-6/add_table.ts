@@ -1,6 +1,7 @@
 const color = require("bash-color");
 import { db } from "../../index";
 import { parsedTcOne } from "./parse";
+import { tc6Format } from "./Table_format";
 
 /**
  *@description creates new table for trucost table number ref'd in title
@@ -9,7 +10,7 @@ import { parsedTcOne } from "./parse";
  */
 const createTcSix = (tableName: string) => {
   const table: string = `${tableName}_tc_6`;
-  const sql: string = `CREATE TABLE ${tableName}.${table}(id int, first_name VARCHAR(255), last_name VARCHAR(255), gender VARCHAR(255), PRIMARY KEY(id))`;
+  const sql: string = `CREATE TABLE ${tableName}.${table}${tc6Format}`;
   const fileName: string = tableName.substring(0, 4);
   db.query(sql, (err: string) => {
     if (err) throw err;

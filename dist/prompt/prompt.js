@@ -7,7 +7,7 @@ const properties = [
     {
         name: "filename",
         validator: /^[a-zA-Z\s\-]+$/,
-        warning: "Username must be only letters, spaces, or dashes",
+        warning: "File name must be only letters, spaces, or dashes",
     },
 ];
 /**
