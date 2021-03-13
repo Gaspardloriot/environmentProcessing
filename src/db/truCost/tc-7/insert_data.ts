@@ -3,7 +3,7 @@ import { db } from "../../index";
 import { refFile } from "../refTc_tables";
 import { getChunkedData } from "../chunks";
 import { BIG_CHUNK_SIZE } from "../constants";
-
+import { checkAllDataUploaded } from "../../../index";
 /**
  *@description migrates all required data of trucost file number ref'd in function number to db
  * @param fileName name of client data file to ref and id trucost data tables and database
@@ -37,6 +37,9 @@ const insertDataTcOne = (fileName: string, formattedData: any) => {
           ),
           color.wrap(`    DONE`, color.colors.GREEN)
         );
+        if (chunkNumber === allChunks.length) {
+          checkAllDataUploaded();
+        }
       }
     });
   }
