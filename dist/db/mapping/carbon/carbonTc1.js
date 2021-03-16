@@ -1,36 +1,33 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.createProject_data = void 0;
 const color = require("bash-color");
-import { db } from "../../index";
-import { drop_table } from "../../utils/drop_table";
-import { getLatestCarbon } from "./carbonTc2";
+const index_1 = require("../../index");
+const drop_table_1 = require("../../utils/drop_table");
+const carbonTc2_1 = require("./carbonTc2");
 const dataMeta = require("../../../../dataStructures.json");
-
 const createProject_data = () => {
-  const database: string = dataMeta.dataStructures.database;
-  const project_data_1: string = "project_data_1";
-  const table: string = dataMeta.dataStructures.clientData.table;
-  const sql: string = `create table ${database}.${project_data_1} AS
+    const database = dataMeta.dataStructures.database;
+    const project_data_1 = "project_data_1";
+    const table = dataMeta.dataStructures.clientData.table;
+    const sql = `create table ${database}.${project_data_1} AS
 
   (SELECT * from ${database}.${table});
   `;
-
-  db.query(sql, (err: string) => {
-    if (err) throw err;
-    else {
-      console.log(
-        "TABLE",
-        color.wrap(`${project_data_1}`, color.colors.CYAN),
-        "CREATE.....",
-        color.wrap("DONE", color.colors.GREEN)
-      );
-      appendTc1Carbon(database, project_data_1);
-    }
-  });
+    index_1.db.query(sql, (err) => {
+        if (err)
+            throw err;
+        else {
+            console.log("TABLE", color.wrap(`${project_data_1}`, color.colors.CYAN), "CREATE.....", color.wrap("DONE", color.colors.GREEN));
+            appendTc1Carbon(database, project_data_1);
+        }
+    });
 };
-
-const appendTc1Carbon = (database: string, toDrop: string) => {
-  const tc1: string = dataMeta.dataStructures.trucostData.table1.table;
-  const table: string = "project_table_2";
-  const sql: string = `CREATE TABLE ${database}.${table} AS
+exports.createProject_data = createProject_data;
+const appendTc1Carbon = (database, toDrop) => {
+    const tc1 = dataMeta.dataStructures.trucostData.table1.table;
+    const table = "project_table_2";
+    const sql = `CREATE TABLE ${database}.${table} AS
 
   (select ${database}.${toDrop}.*,
     ${database}.${tc1}.GICS_Sector_Code,
@@ -60,20 +57,13 @@ const appendTc1Carbon = (database: string, toDrop: string) => {
 
    from ${database}.${tc1}, ${database}.${toDrop} where ${database}.${tc1}.identifier = ${database}.${toDrop}.identifier);
   `;
-
-  db.query(sql, (err: string) => {
-    if (err) throw err;
-    else {
-      console.log(
-        "TABLE",
-        color.wrap(`${table}`, color.colors.CYAN),
-        "CREATE.....",
-        color.wrap("DONE", color.colors.GREEN)
-      );
-    }
-    drop_table(database, toDrop);
-    getLatestCarbon();
-  });
+    index_1.db.query(sql, (err) => {
+        if (err)
+            throw err;
+        else {
+            console.log("TABLE", color.wrap(`${table}`, color.colors.CYAN), "CREATE.....", color.wrap("DONE", color.colors.GREEN));
+        }
+        drop_table_1.drop_table(database, toDrop);
+        carbonTc2_1.getLatestCarbon();
+    });
 };
-
-export { createProject_data };

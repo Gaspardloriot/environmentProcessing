@@ -6,6 +6,7 @@ const index_1 = require("../../index");
 const refTc_tables_1 = require("../refTc_tables");
 const chunks_1 = require("../chunks");
 const constants_1 = require("../constants");
+const index_2 = require("../../../index");
 /**
  *@description migrates all required data of trucost file number ref'd in function number to db
  * @param fileName name of client data file to ref and id trucost data tables and database
@@ -30,6 +31,9 @@ const insertDataTcOne = (fileName, formattedData) => {
                 const chunkString = `0000${chunkNumber.toString()}`;
                 const chunkNumberLog = chunkString.substring(chunkString.length - 3, chunkString.length);
                 console.log("CHUNK", color.wrap(`    ${chunkNumberLog}/${allChunks.length}`, color.colors.YELLOW), color.wrap(`    DONE`, color.colors.GREEN));
+                if (chunkNumber === allChunks.length) {
+                    index_2.checkAllDataUploaded();
+                }
             }
         });
     }
