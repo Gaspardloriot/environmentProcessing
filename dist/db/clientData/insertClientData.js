@@ -52,6 +52,7 @@ const getPost = (row) => {
         Apportioning_Factor: row[18],
         Weight: row[19],
         Revenue_USDm: row[20],
+        Revenue_CRNCYm: row[21],
     };
     return post;
 };

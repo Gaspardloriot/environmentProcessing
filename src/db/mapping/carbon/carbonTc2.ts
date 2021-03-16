@@ -1,12 +1,13 @@
 const color = require("bash-color");
 import { db } from "../../index";
 import { drop_table } from "../../utils/drop_table";
+import { appendTc3fossil_capex } from "../fossil_capex/fossil_capexTc3";
 const dataMeta = require("../../../../dataStructures.json");
 
 const getLatestCarbon = () => {
   const database: string = dataMeta.dataStructures.database;
   const table: string = "latest_carbon";
-  const sourceTable: string = dataMeta.dataStructures.trucostData.table2.table;
+  const tc2: string = dataMeta.dataStructures.trucostData.table2.table;
   const sql: string = `CREATE TABLE ${database}.${table} AS
   (SELECT 
     Carbon_Scope_3_Upstream_tCO2e,
@@ -14,7 +15,7 @@ const getLatestCarbon = () => {
     TCUID, max(Financial_Year) as Latest_year_Scope3,
     identifier,
     Revenue_USD_mn
-  FROM ${database}.${sourceTable}
+  FROM ${database}.${tc2}
   GROUP BY TCUID)
   `;
 
@@ -32,19 +33,20 @@ const getLatestCarbon = () => {
   });
 };
 
-const appendTc2Carbon = (database: string, sourceTable: string) => {
+const appendTc2Carbon = (database: string, tc2: string) => {
   const table: string = "project_table_2";
   const newTable: string = "project_data_3";
   const sql: string = `CREATE TABLE ${database}.${newTable} AS
   (SELECT 
     ${database}.${table}.*,
-    ${database}.${sourceTable}.Carbon_Scope_3_Upstream_tCO2e,
-    ${database}.${sourceTable}.Carbon_Scope_3_Downstream_tCO2e, 
-    ${database}.${sourceTable}.Revenue_USD_mn, 
-    ${database}.${sourceTable}.Latest_year_Scope3
+    ${database}.${tc2}.Latest_year_Scope3,
+    ${database}.${tc2}.Carbon_Scope_3_Upstream_tCO2e,
+    ${database}.${tc2}.Carbon_Scope_3_Downstream_tCO2e, 
+    ${database}.${tc2}.Revenue_USD_mn AS Scope_3_Latest_Revenue_USDm,
+    ${database}.${tc2}.Carbon_Scope_3_Downstream_tCO2e / ${database}.${table}.Revenue_CRNCYm AS Scope_3DS_C_DIV_R_Intensity
   FROM ${database}.${table}
-  LEFT JOIN ${database}.${sourceTable}
-  ON ${database}.${sourceTable}.TCUID = ${database}.${table}.Trucost_UID);
+  LEFT JOIN ${database}.${tc2}
+  ON ${database}.${tc2}.TCUID = ${database}.${table}.Trucost_UID);
   `;
   db.query(sql, (err: string) => {
     if (err) throw err;
@@ -56,8 +58,9 @@ const appendTc2Carbon = (database: string, sourceTable: string) => {
         color.wrap("DONE", color.colors.GREEN)
       );
     }
-    drop_table(database, sourceTable);
+    drop_table(database, tc2);
     drop_table(database, table);
+    appendTc3fossil_capex(database, newTable);
   });
 };
 
