@@ -4,6 +4,7 @@ exports.appendTc3energy_generation = void 0;
 const color = require("bash-color");
 const index_1 = require("../../index");
 const drop_table_1 = require("../../utils/drop_table");
+const extractives_energyTc7_1 = require("../extractives_energy_revenue/extractives_energyTc7");
 const dataMeta = require("../../../../dataStructures.json");
 const appendTc3energy_generation = (database, toDrop) => {
     const tc3 = dataMeta.dataStructures.trucostData.table3.table;
@@ -54,6 +55,7 @@ const appendTc3energy_generation = (database, toDrop) => {
             console.log("TABLE", color.wrap(`${table}`, color.colors.CYAN), "CREATE.....", color.wrap("DONE", color.colors.GREEN));
         }
         drop_table_1.drop_table(database, toDrop);
+        extractives_energyTc7_1.callTc7extractivesEnergy(database, table);
     });
 };
 exports.appendTc3energy_generation = appendTc3energy_generation;

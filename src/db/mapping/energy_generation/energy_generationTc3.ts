@@ -1,6 +1,7 @@
 const color = require("bash-color");
 import { db } from "../../index";
 import { drop_table } from "../../utils/drop_table";
+import { callTc7extractivesEnergy } from "../extractives_energy_revenue/extractives_energyTc7";
 const dataMeta = require("../../../../dataStructures.json");
 
 const appendTc3energy_generation = (database: string, toDrop: string) => {
@@ -57,6 +58,7 @@ const appendTc3energy_generation = (database: string, toDrop: string) => {
       );
     }
     drop_table(database, toDrop);
+    callTc7extractivesEnergy(database, table);
   });
 };
 
