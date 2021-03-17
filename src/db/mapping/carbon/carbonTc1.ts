@@ -45,7 +45,7 @@ const appendTc1Carbon = (database: string, toDrop: string) => {
     ${database}.${tc1}.Country,
     ${database}.${tc1}.Carbon_Scope_1_tonnes_CO2e,
     ${database}.${tc1}.Carbon_Scope_2_tonnes_CO2e,
-    ${database}.${tc1}.Carbon_Scope_3_tonnes_CO2e AS Carbon_Scope_3US_tonnes_CO2e ,
+    ${database}.${tc1}.Carbon_Scope_3_tonnes_CO2e AS Carbon_Scope_3US_tonnes_CO2e,
     ${database}.${tc1}.Carbon_Direct_tonnes_CO2e,
     ${database}.${tc1}.Carbon_First_Tier_Indirect_tonnes_CO2e,
     ${database}.${tc1}.Carbon_DirectPLUSFirst_Tier_Indirect_tCO2e,
@@ -56,7 +56,6 @@ const appendTc1Carbon = (database: string, toDrop: string) => {
     ${database}.${tc1}.Carbon_Direct_tonnes_CO2e / ${database}.${toDrop}.Revenue_CRNCYm  AS Direct_C_DIV_R_Intensity,
     ${database}.${tc1}.Carbon_First_Tier_Indirect_tonnes_CO2e / ${database}.${toDrop}.Revenue_CRNCYm AS First_Tier_C_DIV_R_Intensity,
     ${database}.${tc1}.Carbon_DirectPLUSFirst_Tier_Indirect_tCO2e / ${database}.${toDrop}.Revenue_CRNCYm  AS DirectPLUSFirst_Tier_DIV_R_Intensity
-
 
    from ${database}.${tc1}, ${database}.${toDrop} where ${database}.${tc1}.identifier = ${database}.${toDrop}.identifier);
   `;
