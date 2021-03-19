@@ -13,5 +13,8 @@
     "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
     "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": true,
     "typescript.implementationsCodeLens.enabled": true,
-    "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "compile-hero.disable-compile-files-on-did-save-code": true,
 }
