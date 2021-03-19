@@ -35,6 +35,7 @@
     "csv-parse": "4.15.1",
     "get-stream": "4.1.0",
     "jsonfile": "6.1.0",
+    "log-update": "^4.0.0",
     "mysql": "2.18.1",
     "prompt": "1.1.0"
   }
