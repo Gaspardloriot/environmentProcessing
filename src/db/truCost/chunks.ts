@@ -18,6 +18,8 @@ const getChunks = (arrayLength: number, CHUNK_SIZE: number): number[][] => {
   console.log(
     color.purple(`   chunks created :  ${allIndexes.length}\n`, true)
   );
+  console.log("");
+  console.log("");
   return allIndexes;
 };
 

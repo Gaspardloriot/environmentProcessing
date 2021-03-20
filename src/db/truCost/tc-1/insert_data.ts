@@ -1,9 +1,10 @@
-const color = require("bash-color");
+const logUpdate = require("log-update");
 import { db } from "../../index";
 import { refFile } from "../refTc_tables";
 import { createTcTwo } from "../tc-2/add_table";
 import { getChunkedData } from "../chunks";
 import { SMALL_CHUNK_SIZE } from "../constants";
+import { logProgress } from "../../../logging/logProgress";
 
 /**
  * @description migrates all required data of trucost file number ref'd in function number to db
@@ -22,22 +23,11 @@ const insertDataTcOne = (fileName: string, formattedData: any) => {
       if (err) throw err;
       else if (res) {
         const chunkNumber: number = i + 1;
-        const chunkString: string = `0000${chunkNumber.toString()}`;
-        const chunkNumberLog: string = chunkString.substring(
-          chunkString.length - 3,
-          chunkString.length
-        );
-        console.log(
-          "CHUNK",
-          color.wrap(
-            `    ${chunkNumberLog}/${allChunks.length}`,
-            color.colors.YELLOW
-          ),
-          color.wrap(`    DONE`, color.colors.GREEN)
-        );
+        logProgress(chunkNumber, allChunks.length);
       }
     });
   }
+  logUpdate.clear();
   refFile(table, "table1");
   createTcTwo(`${fileName}db`);
 };

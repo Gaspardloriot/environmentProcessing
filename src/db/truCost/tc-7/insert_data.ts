@@ -1,9 +1,12 @@
 const color = require("bash-color");
+const logUpdate = require("log-update");
 import { db } from "../../index";
 import { refFile } from "../refTc_tables";
 import { getChunkedData } from "../chunks";
 import { BIG_CHUNK_SIZE } from "../constants";
 import { checkAllDataUploaded } from "../../../index";
+import { logProgress } from "../../../logging/logProgress";
+
 /**
  *@description migrates all required data of trucost file number ref'd in function number to db
  * @param fileName name of client data file to ref and id trucost data tables and database
@@ -24,25 +27,15 @@ const insertDataTcOne = (fileName: string, formattedData: any) => {
       if (err) throw err;
       else if (res) {
         const chunkNumber: number = i + 1;
-        const chunkString: string = `0000${chunkNumber.toString()}`;
-        const chunkNumberLog: string = chunkString.substring(
-          chunkString.length - 3,
-          chunkString.length
-        );
-        console.log(
-          "CHUNK",
-          color.wrap(
-            `    ${chunkNumberLog}/${allChunks.length}`,
-            color.colors.YELLOW
-          ),
-          color.wrap(`    DONE`, color.colors.GREEN)
-        );
+        logProgress(chunkNumber, allChunks.length);
         if (chunkNumber === allChunks.length) {
           checkAllDataUploaded();
         }
       }
     });
   }
+  logUpdate.clear();
+  console.log("");
   refFile(table, "table7");
 };
 

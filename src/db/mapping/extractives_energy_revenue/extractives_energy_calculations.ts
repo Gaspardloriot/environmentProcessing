@@ -1,6 +1,7 @@
 const color = require("bash-color");
 import { db } from "../../index";
 import { drop_table } from "../../utils/drop_table";
+import { appendTc42Da } from "../2DA/2DaTc4";
 import { trucostSector_code } from "./constants";
 
 const calculateExtractivesAndPG = (database: string, toDrop: string) => {
@@ -77,6 +78,7 @@ const calculateExtractivesAndPG = (database: string, toDrop: string) => {
       );
     }
     drop_table(database, toDrop);
+    appendTc42Da(database, newTable);
   });
 };
 
