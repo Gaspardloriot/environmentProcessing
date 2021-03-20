@@ -1,4 +1,3 @@
-const color = require("bash-color");
 import { db } from "../../index";
 import { parsedTcOne } from "./parse";
 import { tc2Format } from "./Table_format";
@@ -14,12 +13,6 @@ const createTcTwo = (tableName: string) => {
   db.query(sql, (err: string) => {
     if (err) throw err;
     else {
-      console.log(
-        "TABLE",
-        color.wrap(`${table}`, color.colors.CYAN),
-        "CREATE.....",
-        color.wrap("DONE", color.colors.GREEN)
-      );
       parsedTcOne(fileName);
     }
   });
