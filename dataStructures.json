@@ -1,38 +1,38 @@
 {
     "dataStructures": {
-        "database": "filedb",
+        "database": null,
         "clientData": {
-            "table": "file_clientTable",
-            "uploaded": true
+            "table": null,
+            "uploaded": false
         },
         "trucostData": {
             "table1": {
-                "table": "filedb_tc_1",
-                "uploaded": true
+                "table": null,
+                "uploaded": false
             },
             "table2": {
-                "table": "filedb_tc_2",
-                "uploaded": true
+                "table": null,
+                "uploaded": false
             },
             "table3": {
-                "table": "filedb_tc_3",
-                "uploaded": true
+                "table": null,
+                "uploaded": false
             },
             "table4": {
-                "table": "filedb_tc_4",
-                "uploaded": true
+                "table": null,
+                "uploaded": false
             },
             "table5": {
-                "table": "filedb_tc_5",
-                "uploaded": true
+                "table": null,
+                "uploaded": false
             },
             "table6": {
-                "table": "filedb_tc_6",
-                "uploaded": true
+                "table": null,
+                "uploaded": false
             },
             "table7": {
-                "table": "filedb_tc_7",
-                "uploaded": true
+                "table": null,
+                "uploaded": false
             }
         }
     }
