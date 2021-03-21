@@ -1,6 +1,7 @@
 const color = require("bash-color");
 import { db } from "../../index";
 import { drop_table } from "../../utils/drop_table";
+import { appendTc52CEAR } from "../CEAR/CEARTc5";
 const dataMeta = require("../../../../dataStructures.json");
 
 const appendTc42Da = (database: string, toDrop: string) => {
@@ -82,6 +83,7 @@ const appendTc42Da = (database: string, toDrop: string) => {
       );
     }
     drop_table(database, toDrop);
+    appendTc52CEAR(database, newTable);
   });
 };
 
