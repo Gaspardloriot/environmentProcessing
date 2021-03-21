@@ -2,11 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.insertDataTcOne = void 0;
 const color = require("bash-color");
+const logUpdate = require("log-update");
 const index_1 = require("../../index");
 const refTc_tables_1 = require("../refTc_tables");
 const add_table_1 = require("../tc-3/add_table");
 const chunks_1 = require("../chunks");
 const constants_1 = require("../constants");
+const logProgress_1 = require("../../../logging/logProgress");
 /**
  *@description migrates all required data of trucost file number ref'd in function number to db
  * @param fileName name of client data file to ref and id trucost data tables and database
@@ -25,12 +27,12 @@ const insertDataTcOne = (fileName, formattedData) => {
                 throw err;
             else if (res) {
                 const chunkNumber = i + 1;
-                const chunkString = `0000${chunkNumber.toString()}`;
-                const chunkNumberLog = chunkString.substring(chunkString.length - 3, chunkString.length);
-                console.log("CHUNK", color.wrap(`    ${chunkNumberLog}/${allChunks.length}`, color.colors.YELLOW), color.wrap(`    DONE`, color.colors.GREEN));
+                logProgress_1.logProgress(chunkNumber, allChunks.length);
             }
         });
     }
+    logUpdate.clear();
+    console.log("");
     refTc_tables_1.refFile(table, "table2");
     add_table_1.createTcThree(`${fileName}db`);
 };

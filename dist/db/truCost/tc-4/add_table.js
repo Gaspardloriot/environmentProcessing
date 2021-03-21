@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createTcFour = void 0;
-const color = require("bash-color");
 const index_1 = require("../../index");
 const parse_1 = require("./parse");
 const Table_format_1 = require("./Table_format");
@@ -18,7 +17,6 @@ const createTcFour = (tableName) => {
         if (err)
             throw err;
         else {
-            console.log("TABLE", color.wrap(`${table}`, color.colors.CYAN), "CREATE.....", color.wrap("DONE", color.colors.GREEN));
             parse_1.parsedTcOne(fileName);
         }
     });
