@@ -33,7 +33,6 @@
     "bash-color": "0.0.4",
     "csv-parse": "4.15.1",
     "get-stream": "4.1.0",
-    "json2csv": "^5.0.6",
     "jsonfile": "6.1.0",
     "log-update": "4.0.0",
     "mysql": "2.18.1",
