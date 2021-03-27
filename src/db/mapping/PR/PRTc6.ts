@@ -1,6 +1,7 @@
 const color = require("bash-color");
 import { db } from "../../index";
 import { drop_table } from "../../utils/drop_table";
+import { getProjectTable } from "../../getProjectTable/getProjectTable";
 const dataMeta = require("../../../../dataStructures.json");
 
 const appendTc6PR = (database: string, toDrop: string) => {
@@ -105,6 +106,7 @@ const addPrimaryKey = (database: string, table: string) => {
   db.query(sql, (err: string) => {
     if (err) throw err;
     else {
+      getProjectTable();
       console.log(
         "TABLE",
         color.wrap(`${table}`, color.colors.CYAN),

@@ -1,4 +1,3 @@
-const color = require("bash-color");
 const logUpdate = require("log-update");
 import { db } from "../../index";
 import { refFile } from "../refTc_tables";
