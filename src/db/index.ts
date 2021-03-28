@@ -1,12 +1,12 @@
+require("dotenv").config();
 const mysql = require("mysql");
 const color = require("bash-color");
 import { createDb } from "./createDb";
 
 const db = mysql.createConnection({
   host: "localhost",
-  user: "root",
-  password: "",
-  database: "",
+  user: `${process.env.DB_USER}`,
+  password: `${process.env.DB_PASS}`,
 });
 
 /**
