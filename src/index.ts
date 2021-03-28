@@ -49,4 +49,35 @@ const stopCheck = (toStop: any) => {
   clearInterval(toStop);
 };
 
+var list = require("select-shell")(
+  /* possible configs */
+  {
+    pointer: " ▸ ",
+    pointerColor: "yellow",
+    checked: " ◉  ",
+    unchecked: " ◎  ",
+    checkedColor: "blue",
+    msgCancel: "No selected options!",
+    msgCancelColor: "orange",
+    multiSelect: true,
+    inverse: true,
+    prepend: true,
+    disableInput: true,
+  }
+);
+
+var stream = process.stdin;
+
+list.option(" One    ").option(" Two    ").option(" Three  ").list();
+
+list.on("select", function (options: any) {
+  console.log(options);
+  process.exit(0);
+});
+
+list.on("cancel", function (options: any) {
+  console.log("Cancel list, " + options.length + " options selected");
+  process.exit(0);
+});
+
 export { checkAllDataUploaded };
