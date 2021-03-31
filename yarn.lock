@@ -339,12 +339,12 @@ ncp@1.0.x:
   resolved "https://registry.npmjs.org/ncp/-/ncp-1.0.1.tgz"
   integrity sha1-0VNn5cuHQyuhF9K/gP30Wuz7QkY=
 
-nodemailer@^6.5.0:
+nodemailer@6.5.0:
   version "6.5.0"
   resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.5.0.tgz#d12c28d8d48778918e25f1999d97910231b175d9"
   integrity sha512-Tm4RPrrIZbnqDKAvX+/4M+zovEReiKlEXWDzG4iwtpL9X34MJY+D5LnQPH/+eghe8DLlAVshHAJZAZWBGhkguw==
 
-objects-to-csv@^1.3.6:
+objects-to-csv@1.3.6:
   version "1.3.6"
   resolved "https://registry.yarnpkg.com/objects-to-csv/-/objects-to-csv-1.3.6.tgz#05f25144099151ee915d2dd1458d4dd3ea96d84a"
   integrity sha512-383eSpS3hmgCksW85KIqBtcbgSW5DDVsCmzLoM6C3q4yzOX2rmtWxF4pbLJ76fz+ufA+4/SwAT4QdaY6IUWmAg==
@@ -444,7 +444,7 @@ safe-buffer@5.1.2, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   resolved "https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.1.2.tgz"
   integrity sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==
 
-select-shell@^1.1.3:
+select-shell@1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/select-shell/-/select-shell-1.1.3.tgz#66dfd8d9c92e51304103b9c483a1de59799af289"
   integrity sha512-TpVkWtYC5KG3nPs4YDGt2MgzU3qEp+a8l+VfIzpBGkRYUA9ByFQ8JXKDD8472wmfkSRX9rwuFic7dP2mkyoIMw==

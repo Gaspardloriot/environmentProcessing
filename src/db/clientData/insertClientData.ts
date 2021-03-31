@@ -1,8 +1,9 @@
 const color = require("bash-color");
+const dataMeta = require("../../../dataStructures.json");
 import { db } from "../index";
 import { refDatabase } from "./updateMeta";
 import { dbResponse } from "./types";
-
+import { createTcOne } from "../truCost/tc-1/add_table";
 /**
  *@description inserts client data into db
  * @param tableName string name of client data
@@ -25,6 +26,7 @@ const insertData = async (tableName: string, data: string[]): Promise<void> => {
             "MIGRATION",
             color.wrap("DONE", color.colors.GREEN)
           );
+          createTcOne(dataMeta.dataStructures.database);
         }
       }
     });

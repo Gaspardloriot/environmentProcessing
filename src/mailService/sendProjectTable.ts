@@ -38,7 +38,7 @@ const sendProjectTable = async () => {
   });
   console.log("");
   console.log("Message sent:", info.messageId, "🚀");
-  return;
+  process.exit(0);
 };
 
 export { sendProjectTable };

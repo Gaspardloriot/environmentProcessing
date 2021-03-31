@@ -1,6 +1,8 @@
 const prompter = require("prompt");
 import { clientDataToSQL } from "../parse";
 import { propertiesType } from "./types";
+import { selectConfig } from "./constants";
+import { actionFromCode } from "../actionFromCode/actionFromCode";
 
 const properties: propertiesType[] = [
   {
@@ -9,6 +11,29 @@ const properties: propertiesType[] = [
     warning: "File name must be only letters, spaces, or dashes",
   },
 ];
+
+/**
+ * @description select one of 5 options of the environmentProcessing
+ */
+const selectAction = () => {
+  const list = require("select-shell")(selectConfig);
+  process.stdin;
+
+  list
+    .option("Trucost + Client Import", 1)
+    .option("Client Import", 2)
+    .option("Trucost Table Import", 3)
+    .list();
+
+  list.on("select", (option: any) => {
+    actionFromCode(option[0].value);
+  });
+
+  list.on("cancel", (options: any) => {
+    console.log("Cancel list, " + options.length + " options selected");
+    process.exit(0);
+  });
+};
 
 /**
  * @description gets client Filename to launch Db import process
@@ -31,4 +56,4 @@ function onErr(err: string) {
   console.log(err);
 }
 
-export { getFilename };
+export { getFilename, selectAction };
