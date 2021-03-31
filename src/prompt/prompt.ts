@@ -1,4 +1,5 @@
 const prompter = require("prompt");
+const color = require("bash-color");
 import { clientDataToSQL } from "../parse";
 import { propertiesType } from "./types";
 import { selectConfig } from "./constants";
@@ -16,6 +17,10 @@ const properties: propertiesType[] = [
  * @description select one of 5 options of the environmentProcessing
  */
 const selectAction = () => {
+  console.log(
+    color.wrap("\n\nPlease select an action to perform :\n", color.colors.CYAN)
+  );
+
   const list = require("select-shell")(selectConfig);
   process.stdin;
 
