@@ -12,7 +12,11 @@ import { logProgress } from "../../../logging/logProgress";
  * @param formattedData all formatted data for trucost table
  * @returns void
  */
-const insertDataTcOne = (fileName: string, formattedData: any) => {
+const insertDataTcOne = (
+  fileName: string,
+  formattedData: any,
+  continueCycle: boolean
+) => {
   const table: string = `${fileName}db_tc_3`;
   const sql: string = `INSERT INTO ${fileName}db.${table} VALUES ?`;
   formattedData.shift();
@@ -33,7 +37,7 @@ const insertDataTcOne = (fileName: string, formattedData: any) => {
   logUpdate.clear();
   console.log("");
   refFile(table, "table3");
-  createTcFour(`${fileName}db`);
+  if (continueCycle) createTcFour(`${fileName}db`);
 };
 
 export { insertDataTcOne };

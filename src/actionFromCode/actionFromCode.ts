@@ -1,4 +1,4 @@
-import { getFilename } from "../prompt/prompt";
+import { getFilename, selectTableImport } from "../prompt/prompt";
 
 const actionFromCode = (code: number) => {
   switch (code) {
@@ -9,7 +9,7 @@ const actionFromCode = (code: number) => {
       console.log("case 2");
       break;
     case 3:
-      console.log("case 3");
+      selectTableImport();
       break;
     default:
       process.exit(0);

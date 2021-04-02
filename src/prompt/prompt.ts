@@ -4,6 +4,7 @@ import { clientDataToSQL } from "../parse";
 import { propertiesType } from "./types";
 import { selectConfig } from "./constants";
 import { actionFromCode } from "../actionFromCode/actionFromCode";
+import { TrucostTableImport } from "../actionFromCode/TrucostTableImport";
 
 const properties: propertiesType[] = [
   {
@@ -41,6 +42,37 @@ const selectAction = () => {
 };
 
 /**
+ * @description select one of 7 tables to import
+ */
+const selectTableImport = () => {
+  console.log(
+    color.wrap("\n\nPlease select Table to import :\n", color.colors.CYAN)
+  );
+
+  const list = require("select-shell")(selectConfig);
+  process.stdin;
+
+  list
+    .option("tc-1", 1)
+    .option("tc-2", 2)
+    .option("tc-3", 3)
+    .option("tc-4", 4)
+    .option("tc-5", 5)
+    .option("tc-6", 6)
+    .option("tc-7", 7)
+    .list();
+
+  list.on("select", (option: any) => {
+    TrucostTableImport(option[0].value);
+  });
+
+  list.on("cancel", (options: any) => {
+    console.log("Cancel list, " + options.length + " options selected");
+    process.exit(0);
+  });
+};
+
+/**
  * @description gets client Filename to launch Db import process
  * @returns void
  */
@@ -61,4 +93,4 @@ function onErr(err: string) {
   console.log(err);
 }
 
-export { getFilename, selectAction };
+export { getFilename, selectAction, selectTableImport };

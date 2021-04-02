@@ -13,7 +13,11 @@ import { logProgress } from "../../../logging/logProgress";
  * @param formattedData all formatted data for trucost table
  * @returns void
  */
-const insertDataTcOne = (fileName: string, formattedData: any) => {
+const insertDataTcOne = (
+  fileName: string,
+  formattedData: any,
+  continueCycle: boolean = true
+) => {
   const table: string = `${fileName}db_tc_7`;
   const sql: string = `INSERT INTO ${fileName}db.${table} VALUES ?`;
   formattedData.shift();
@@ -28,7 +32,7 @@ const insertDataTcOne = (fileName: string, formattedData: any) => {
       else if (res) {
         const chunkNumber: number = i + 1;
         logProgress(chunkNumber, allChunks.length);
-        if (chunkNumber === allChunks.length) {
+        if (chunkNumber === allChunks.length && continueCycle) {
           checkAllDataUploaded();
         }
       }
