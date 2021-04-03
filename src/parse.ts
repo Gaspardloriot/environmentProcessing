@@ -4,6 +4,7 @@ import parse from "csv-parse";
 import { launchDatabase } from "./db/index";
 import { createClientTable } from "./db/clientData/clientTable";
 import { drop_table } from "./db/utils/drop_table";
+import { cleanSlate } from "./db/utils/cleanSlate";
 const dataMeta = require("../dataStructures.json");
 
 /**
@@ -38,9 +39,11 @@ const clientDataToSQL = async (
 ): Promise<void> => {
   const formattedData: string[] = await csvParser(fileName);
   const database: string = dataMeta.dataStructures.database;
-  if (database && continueCycle) {
+  if (continueCycle) {
+    if (database) cleanSlate(database);
     await launchDatabase(fileName, formattedData);
-  } else {
+  }
+  if (database && !continueCycle) {
     await drop_table(database, dataMeta.dataStructures.clientData.table);
     createClientTable(
       database.substring(0, database.length - 2),

@@ -1,6 +1,8 @@
+const dataMeta = require("../../dataStructures.json");
 import { getFilename, selectTableImport } from "../prompt/prompt";
+import { cleanSlate } from "../db/utils/cleanSlate";
 
-const actionFromCode = (code: number) => {
+const actionFromCode = async (code: number) => {
   switch (code) {
     case 1:
       getFilename(true);
@@ -11,6 +13,8 @@ const actionFromCode = (code: number) => {
     case 3:
       selectTableImport();
       break;
+    case 4:
+      await cleanSlate(dataMeta.dataStructures.database);
     default:
       process.exit(0);
   }

@@ -29,6 +29,7 @@ const selectAction = () => {
     .option("Trucost + Client Import", 1)
     .option("Client Import", 2)
     .option("Trucost Table Import", 3)
+    .option("Clean Slate", 4)
     .list();
 
   list.on("select", (option: any) => {
