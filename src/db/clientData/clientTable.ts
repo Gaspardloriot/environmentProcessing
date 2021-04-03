@@ -11,7 +11,8 @@ import { client_tc } from "./Table_format";
  */
 const createClientTable = async (
   database: string,
-  formattedData: string[]
+  formattedData: string[],
+  continueCycle: boolean = true
 ): Promise<void> => {
   const table: string = `${database}_clientTable`;
   const sql: string = `CREATE TABLE ${database}db.${table}${client_tc}`;
@@ -27,7 +28,7 @@ const createClientTable = async (
       );
     }
   });
-  insertData(database, formattedData);
+  insertData(database, formattedData, continueCycle);
 };
 
 export { createClientTable };

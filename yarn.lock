@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@types/get-stream@3.0.2":
+"@types/get-stream@^3.0.2":
   version "3.0.2"
-  resolved "https://registry.npmjs.org/@types/get-stream/-/get-stream-3.0.2.tgz"
+  resolved "https://registry.yarnpkg.com/@types/get-stream/-/get-stream-3.0.2.tgz#dfc81de4bc7505344b04b824ce836915612bf524"
   integrity sha512-UQNVnEQdbov8JmapA6DRzxe9/PgMxf6FJ35/QdtQXcga+sun0/VJTnto1O9NNJ3Mk/KKihaCscKZZ0zqqwv8cA==
   dependencies:
     get-stream "*"

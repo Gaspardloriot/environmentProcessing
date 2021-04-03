@@ -76,21 +76,21 @@ const selectTableImport = () => {
  * @description gets client Filename to launch Db import process
  * @returns void
  */
-const getFilename = (): void => {
+const getFilename = (continueCycle: boolean): void => {
   console.log("please enter filename");
   prompter.start();
 
-  prompter.get(properties, function (err: string, result: any) {
+  prompter.get(properties, (err: string, result: any) => {
     if (err) {
       return onErr(err);
     }
     prompter.stop();
-    clientDataToSQL(result.filename);
+    clientDataToSQL(result.filename, continueCycle);
   });
 };
 
-function onErr(err: string) {
+const onErr = (err: string): void => {
   console.log(err);
-}
+};
 
 export { getFilename, selectAction, selectTableImport };
