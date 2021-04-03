@@ -6,6 +6,7 @@ import { createTcFour } from "../tc-4/add_table";
 import { getChunkedData } from "../chunks";
 import { BIG_CHUNK_SIZE } from "../constants";
 import { logProgress } from "../../../logging/logProgress";
+import { exitProcess } from "../../utils/exit";
 /**
  *@description migrates all required data of trucost file number ref'd in function number to db
  * @param fileName name of client data file to ref and id trucost data tables and database
@@ -28,9 +29,10 @@ const insertDataTcOne = (
   for (let i = 0; i < allChunks.length; i++) {
     db.query(sql, [allChunks[i]], (err: string, res: string) => {
       if (err) throw err;
-      else if (res) {
+      if (res) {
         const chunkNumber: number = i + 1;
         logProgress(chunkNumber, allChunks.length);
+        if (chunkNumber === allChunks.length && !continueCycle) exitProcess();
       }
     });
   }
