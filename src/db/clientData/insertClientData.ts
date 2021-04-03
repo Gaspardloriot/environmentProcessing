@@ -4,7 +4,8 @@ import { db } from "../index";
 import { refDatabase } from "./updateMeta";
 import { dbResponse } from "./types";
 import { createTcOne } from "../truCost/tc-1/add_table";
-import { exitProcess } from "../utils/exit";
+import { checkAllDataUploaded } from "../../index";
+import { drop_table } from "../utils/drop_table";
 /**
  *@description inserts client data into db
  * @param tableName string name of client data
@@ -25,14 +26,17 @@ const insertData = async (
 
       if (result && i === data.length - 1) {
         refDatabase(tableName);
+        if (continueCycle) createTcOne(dataMeta.dataStructures.database);
+        if (!continueCycle) {
+          drop_table(`${tableName}db`, "project_data_final");
+          checkAllDataUploaded();
+        }
         console.log(
           "SUCCESS FOR",
           color.wrap(`${tableName}db`, color.colors.CYAN),
           "MIGRATION",
           color.wrap("DONE", color.colors.GREEN)
         );
-        if (continueCycle) createTcOne(dataMeta.dataStructures.database);
-        if (!continueCycle) exitProcess();
       }
     });
   }

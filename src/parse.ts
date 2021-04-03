@@ -41,7 +41,7 @@ const clientDataToSQL = async (
   if (database && continueCycle) {
     await launchDatabase(fileName, formattedData);
   } else {
-    await drop_table(database, `${fileName}_clienttable`);
+    await drop_table(database, dataMeta.dataStructures.clientData.table);
     createClientTable(
       database.substring(0, database.length - 2),
       formattedData,
