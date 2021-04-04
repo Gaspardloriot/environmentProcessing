@@ -28,7 +28,7 @@ const cleanSlate = async (database: string, continueCycle: boolean = true) => {
     if (err) throw err;
     if (res) {
       console.log(
-        "DATABASE",
+        "\n\n\nDATABASE",
         color.wrap(`${database}`, color.colors.RED),
         "DROP.....",
         color.wrap("DONE", color.colors.GREEN)

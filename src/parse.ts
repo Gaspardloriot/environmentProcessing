@@ -1,10 +1,12 @@
 const getStream = require("get-stream");
+const color = require("bash-color");
 import fs from "fs";
 import parse from "csv-parse";
 import { launchDatabase } from "./db/index";
 import { createClientTable } from "./db/clientData/clientTable";
 import { drop_table } from "./db/utils/drop_table";
 import { cleanSlate } from "./db/utils/cleanSlate";
+import { exitProcess } from "./db/utils/exit";
 const dataMeta = require("../dataStructures.json");
 
 /**
@@ -43,13 +45,18 @@ const clientDataToSQL = async (
     if (database) cleanSlate(database);
     await launchDatabase(fileName, formattedData);
   }
-  if (database && !continueCycle) {
-    await drop_table(database, dataMeta.dataStructures.clientData.table);
-    createClientTable(
-      database.substring(0, database.length - 2),
-      formattedData,
-      continueCycle
-    );
+  if (!continueCycle) {
+    if (database) {
+      await drop_table(database, dataMeta.dataStructures.clientData.table);
+      createClientTable(
+        database.substring(0, database.length - 2),
+        formattedData,
+        continueCycle
+      );
+    } else {
+      console.log(color.wrap("\nNO EXISTING DATABASE", color.colors.RED));
+      exitProcess();
+    }
   }
 };
 

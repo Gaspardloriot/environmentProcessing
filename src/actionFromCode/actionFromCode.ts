@@ -17,7 +17,7 @@ const actionFromCode = async (code: number) => {
       cleanSlate(dataMeta.dataStructures.database, false);
       break;
     default:
-    //process.exit(0);
+    process.exit(0);
   }
 };
 
