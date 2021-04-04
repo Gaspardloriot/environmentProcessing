@@ -14,9 +14,10 @@ const actionFromCode = async (code: number) => {
       selectTableImport();
       break;
     case 4:
-      await cleanSlate(dataMeta.dataStructures.database);
+      cleanSlate(dataMeta.dataStructures.database, false);
+      break;
     default:
-      process.exit(0);
+    //process.exit(0);
   }
 };
 

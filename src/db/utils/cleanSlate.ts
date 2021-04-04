@@ -1,28 +1,12 @@
 const color = require("bash-color");
-const jsonfile = require("jsonfile");
+import fs from "fs";
 import { db } from "../index";
-
-const cleanSlate = async (database: string) => {
-  const dataMetaPath: string = "../../../dataStructures.json";
-  await jsonfile.writeFile(dataMetaPath, emptyDataStructures);
-  const sql: string = `DROP DATABASE IF EXISTS ${database}`;
-  await db.query(sql, (err: string) => {
-    if (err) throw err;
-    else {
-      console.log(
-        "DATABASE",
-        color.wrap(`${database}`, color.colors.RED),
-        "DROP.....",
-        color.wrap("DONE", color.colors.GREEN)
-      );
-    }
-  });
-};
+import { exitProcess } from "./exit";
 
 const emptyDataStructures = {
   dataStructures: {
-    database: "filedb",
-    clientData: { table: "file_clientTable", uploaded: true },
+    database: null,
+    clientData: { table: null, uploaded: false },
     trucostData: {
       table1: { table: null, uploaded: false },
       table2: { table: null, uploaded: false },
@@ -33,6 +17,25 @@ const emptyDataStructures = {
       table7: { table: null, uploaded: false },
     },
   },
+};
+
+const cleanSlate = async (database: string, continueCycle: boolean = true) => {
+  const dataMetaPath: string = "dataStructures.json";
+  if (!database) database = "placeholderName";
+  fs.promises.writeFile(dataMetaPath, JSON.stringify(emptyDataStructures));
+  const sql: string = `DROP DATABASE IF EXISTS ${database}`;
+  await db.query(sql, (err: string, res: any) => {
+    if (err) throw err;
+    if (res) {
+      console.log(
+        "DATABASE",
+        color.wrap(`${database}`, color.colors.RED),
+        "DROP.....",
+        color.wrap("DONE", color.colors.GREEN)
+      );
+      if (!continueCycle) exitProcess();
+    }
+  });
 };
 
 export { cleanSlate };
