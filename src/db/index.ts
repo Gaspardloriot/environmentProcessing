@@ -5,8 +5,8 @@ import { createDb } from "./createDb";
 
 const db = mysql.createConnection({
   host: "localhost",
-  user: `${process.env.DB_USER}`,
-  password: `${process.env.DB_PASS}`,
+  user: `root`,
+  password: `root`,
 });
 
 /**
@@ -15,13 +15,10 @@ const db = mysql.createConnection({
  * @param formattedData string[] all formatted data of client file
  */
 const launchDatabase = async (fileName: string, formattedData: string[]) => {
-  db.connect((err: any) => {
-    if (err) {
-      throw err;
-    }
-    console.log("SERVER_CONNECT...", color.wrap("DONE", color.colors.GREEN));
-    createDb(fileName, formattedData);
-  });
+  console.log("hello world this is here bro")
+  console.log(process.env.DB_PASS)
+  console.log("SERVER_CONNECT...", color.wrap("DONE", color.colors.GREEN));
+  createDb(fileName, formattedData);
 };
 
 export { launchDatabase, db };
