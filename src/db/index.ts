@@ -4,7 +4,7 @@ const color = require("bash-color");
 import { createDb } from "./createDb";
 
 const db = mysql.createConnection({
-  host: "localhost",
+  host: "mysqldb",
   user: `root`,
   password: `root`,
 });
@@ -15,10 +15,13 @@ const db = mysql.createConnection({
  * @param formattedData string[] all formatted data of client file
  */
 const launchDatabase = async (fileName: string, formattedData: string[]) => {
-  console.log("hello world this is here bro")
-  console.log(process.env.DB_PASS)
-  console.log("SERVER_CONNECT...", color.wrap("DONE", color.colors.GREEN));
-  createDb(fileName, formattedData);
+  db.connect((err: any) => {
+    if (err) {
+      throw err;
+    }
+    console.log("SERVER_CONNECT...", color.wrap("DONE", color.colors.GREEN));
+    createDb(fileName, formattedData);
+  });
 };
 
 export { launchDatabase, db };

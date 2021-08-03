@@ -8,9 +8,9 @@ const insert_data_1 = require("./insert_data");
  * @param fileName name of client data used to ref and id the trucost table name
  * @returns void
  */
-const parsedTcOne = async (fileName) => {
+const parsedTcOne = async (fileName, continueCycle) => {
     const fullFileName = `${fileName}_tc_4`;
     const formattedData = await parse_1.csvParser(fullFileName);
-    insert_data_1.insertDataTcOne(fileName, formattedData);
+    insert_data_1.insertDataTcOne(fileName, formattedData, continueCycle);
 };
 exports.parsedTcOne = parsedTcOne;

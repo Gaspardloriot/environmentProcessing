@@ -4,6 +4,7 @@ exports.calculateExtractivesAndPG = void 0;
 const color = require("bash-color");
 const index_1 = require("../../index");
 const drop_table_1 = require("../../utils/drop_table");
+const _2DaTc4_1 = require("../2DA/2DaTc4");
 const constants_1 = require("./constants");
 const calculateExtractivesAndPG = (database, toDrop) => {
     const newTable = "project_table_25";
@@ -74,6 +75,7 @@ const calculateExtractivesAndPG = (database, toDrop) => {
             console.log("TABLE", color.wrap(`${newTable}`, color.colors.CYAN), "CREATE.....", color.wrap("DONE", color.colors.GREEN));
         }
         drop_table_1.drop_table(database, toDrop);
+        _2DaTc4_1.appendTc42Da(database, newTable);
     });
 };
 exports.calculateExtractivesAndPG = calculateExtractivesAndPG;

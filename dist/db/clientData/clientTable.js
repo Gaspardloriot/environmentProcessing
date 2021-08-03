@@ -11,7 +11,7 @@ const Table_format_1 = require("./Table_format");
  * @param formattedData string[] client formatted data
  * @returns void
  */
-const createClientTable = async (database, formattedData) => {
+const createClientTable = async (database, formattedData, continueCycle = true) => {
     const table = `${database}_clientTable`;
     const sql = `CREATE TABLE ${database}db.${table}${Table_format_1.client_tc}`;
     index_1.db.query(sql, (err) => {
@@ -21,6 +21,6 @@ const createClientTable = async (database, formattedData) => {
             console.log("TABLE", color.wrap(`${table}`, color.colors.CYAN), "CREATE.....", color.wrap("DONE", color.colors.GREEN));
         }
     });
-    insertClientData_1.insertData(database, formattedData);
+    insertClientData_1.insertData(database, formattedData, continueCycle);
 };
 exports.createClientTable = createClientTable;

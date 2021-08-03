@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createTcSix = void 0;
-const color = require("bash-color");
 const index_1 = require("../../index");
 const parse_1 = require("./parse");
 const Table_format_1 = require("./Table_format");
@@ -10,7 +9,7 @@ const Table_format_1 = require("./Table_format");
  * @param tableName string name of client data file, serves to id each trucost file
  * @returns void
  */
-const createTcSix = (tableName) => {
+const createTcSix = (tableName, continueCycle = true) => {
     const table = `${tableName}_tc_6`;
     const sql = `CREATE TABLE ${tableName}.${table}${Table_format_1.tc6Format}`;
     const fileName = tableName.substring(0, 4);
@@ -18,8 +17,7 @@ const createTcSix = (tableName) => {
         if (err)
             throw err;
         else {
-            console.log("TABLE", color.wrap(`${table}`, color.colors.CYAN), "CREATE.....", color.wrap("DONE", color.colors.GREEN));
-            parse_1.parsedTcOne(fileName);
+            parse_1.parsedTcOne(fileName, continueCycle);
         }
     });
 };
