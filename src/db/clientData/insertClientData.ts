@@ -1,31 +1,42 @@
 const color = require("bash-color");
+const dataMeta = require("../../../dataStructures.json");
 import { db } from "../index";
 import { refDatabase } from "./updateMeta";
 import { dbResponse } from "./types";
-
+import { createTcOne } from "../truCost/tc-1/add_table";
+import { checkAllDataUploaded } from "../../index";
+import { drop_table } from "../utils/drop_table";
 /**
  *@description inserts client data into db
  * @param tableName string name of client data
  * @param data  string[] all client data to be inserted
  * @returns void
  */
-const insertData = async (tableName: string, data: string[]): Promise<void> => {
+const insertData = async (
+  tableName: string,
+  data: string[],
+  continueCycle: boolean
+): Promise<void> => {
   data.shift();
   for (let i = 0; i < data.length; i++) {
     const post: any = getPost(data[i]);
     const sql: string = `INSERT INTO ${tableName}db.${tableName}_clientTable SET ?`;
     db.query(sql, post, (err: string, result: dbResponse) => {
       if (err) throw err;
-      else {
-        if (i === data.length - 1) {
-          refDatabase(tableName);
-          console.log(
-            "SUCCESS FOR",
-            color.wrap(`${tableName}db`, color.colors.CYAN),
-            "MIGRATION",
-            color.wrap("DONE", color.colors.GREEN)
-          );
+
+      if (result && i === data.length - 1) {
+        refDatabase(tableName);
+        if (continueCycle) createTcOne(dataMeta.dataStructures.database);
+        if (!continueCycle) {
+          drop_table(`${tableName}db`, "project_data_final");
+          checkAllDataUploaded();
         }
+        console.log(
+          "SUCCESS FOR",
+          color.wrap(`${tableName}db`, color.colors.CYAN),
+          "MIGRATION",
+          color.wrap("DONE", color.colors.GREEN)
+        );
       }
     });
   }

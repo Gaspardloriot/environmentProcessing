@@ -7,14 +7,14 @@ import { tc5Format } from "./Table_format";
  * @param tableName string name of client data file, serves to id each trucost file
  * @returns void
  */
-const createTcFive = (tableName: string) => {
+const createTcFive = (tableName: string, continueCycle: boolean = true) => {
   const table: string = `${tableName}_tc_5`;
   const sql: string = `CREATE TABLE ${tableName}.${table}${tc5Format}`;
   const fileName: string = tableName.substring(0, 4);
   db.query(sql, (err: string) => {
     if (err) throw err;
     else {
-      parsedTcOne(fileName);
+      parsedTcOne(fileName, continueCycle);
     }
   });
 };

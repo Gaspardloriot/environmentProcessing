@@ -4,9 +4,9 @@ const color = require("bash-color");
 import { createDb } from "./createDb";
 
 const db = mysql.createConnection({
-  host: "localhost",
-  user: `${process.env.DB_USER}`,
-  password: `${process.env.DB_PASS}`,
+  host: "mysqldb",
+  user: `root`,
+  password: `root`,
 });
 
 /**

@@ -1,30 +1,8 @@
 const color = require("bash-color");
-import { getFilename } from "./prompt/prompt";
-import { createTcOne } from "./db/truCost/tc-1/add_table";
+import { selectAction } from "./prompt/prompt";
 import { createProject_data } from "./db/mapping/carbon/carbonTc1";
 
-getFilename();
-
-const checkDbStatus = setInterval(() => {
-  checkDataStructures();
-}, 100);
-
-/**
- * @description checks whether client data has been uploaded
- * @returns void
- */
-const checkDataStructures = () => {
-  const dataMeta = require("../dataStructures.json");
-
-  if (dataMeta.dataStructures.clientData.uploaded) {
-    createTcOne(dataMeta.dataStructures.database);
-    console.log(
-      "CLIENT DATA MIGRATION...",
-      color.wrap("DONE", color.colors.GREEN)
-    );
-    stopCheck(checkDbStatus);
-  }
-};
+selectAction();
 
 const checkAllDataUploaded = () => {
   const dataMeta = require("../dataStructures.json");
@@ -43,10 +21,6 @@ const checkAllDataUploaded = () => {
   } else {
     console.log("not all tables were uploaded successfully");
   }
-};
-
-const stopCheck = (toStop: any) => {
-  clearInterval(toStop);
 };
 
 export { checkAllDataUploaded };

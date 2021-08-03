@@ -1,14 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.db = exports.launchDatabase = void 0;
+require("dotenv").config();
 const mysql = require("mysql");
 const color = require("bash-color");
 const createDb_1 = require("./createDb");
 const db = mysql.createConnection({
     host: "localhost",
-    user: "root",
-    password: "",
-    database: "",
+    user: `${process.env.DB_USER}`,
+    password: `${process.env.DB_PASS}`,
 });
 exports.db = db;
 /**

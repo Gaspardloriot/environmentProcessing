@@ -16,6 +16,8 @@ const getChunks = (arrayLength, CHUNK_SIZE) => {
         allIndexes.push(cycleIndex);
     }
     console.log(color.purple(`   chunks created :  ${allIndexes.length}\n`, true));
+    console.log("");
+    console.log("");
     return allIndexes;
 };
 const getChunkedData = (formattedData, CHUNK_SIZE) => {

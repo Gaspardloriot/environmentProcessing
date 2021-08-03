@@ -29,16 +29,16 @@ const sendProjectTable = async () => {
     ],
   });
 
-  fs.unlink(path, (err) => {
+  /*fs.unlink(path, (err) => {
     if (err) {
       console.error(err);
     }
     console.log("");
     console.log("Project_table file deleted");
-  });
+  });*/
   console.log("");
   console.log("Message sent:", info.messageId, "🚀");
-  return;
+  process.exit(0);
 };
 
 export { sendProjectTable };
