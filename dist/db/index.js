@@ -6,9 +6,11 @@ const mysql = require("mysql");
 const color = require("bash-color");
 const createDb_1 = require("./createDb");
 const db = mysql.createConnection({
-    host: "localhost",
-    user: `${process.env.DB_USER}`,
-    password: `${process.env.DB_PASS}`,
+    host: '172.18.0.1',
+    user: `mysql`,
+    password: `1234`,
+    port: '3307',
+    database: 'tester'
 });
 exports.db = db;
 /**
@@ -17,12 +19,7 @@ exports.db = db;
  * @param formattedData string[] all formatted data of client file
  */
 const launchDatabase = async (fileName, formattedData) => {
-    db.connect((err) => {
-        if (err) {
-            throw err;
-        }
-        console.log("SERVER_CONNECT...", color.wrap("DONE", color.colors.GREEN));
-        createDb_1.createDb(fileName, formattedData);
-    });
+    console.log("SERVER_CONNECT...", color.wrap("DONE", color.colors.GREEN));
+    createDb_1.createDb(fileName, formattedData);
 };
 exports.launchDatabase = launchDatabase;
